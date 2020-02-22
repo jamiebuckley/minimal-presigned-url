@@ -1,3 +1,4 @@
+const url = require('url')
 const AWS = require('aws-sdk')
 const s3 = new AWS.S3({apiVersion: '2006-03-01', region: 'eu-west-2'})
 
@@ -8,11 +9,12 @@ app.use('/public', express.static('public'));
 const port = 3000
 
 const handleIndex = (req, res) => {
+    const success_url = url.format({ protocol: req.protocol, host: req.get('host'), pathname: 'upload_success' });
     const presignedParams = {
         Bucket: process.env['AWS_BUCKET'],
         Fields: { 
             key: 'GeneratedFile' + Date.now(),
-            'success_action_redirect':'http://localhost:3000/upload_success'
+            "success_action_redirect": success_url
         }
     };
 
@@ -30,7 +32,8 @@ const handleIndex = (req, res) => {
                 credential: data.fields['X-Amz-Credential'],
                 date: data.fields['X-Amz-Date'],
                 signature: data.fields['X-Amz-Signature'],
-                policy: data.fields['Policy']
+                policy: data.fields['Policy'],
+                success_action_redirect: success_url
             })
         }
     });

@@ -10,7 +10,7 @@
             <div class="pure-u-1">
                 <form class="pure-form pure-form-stacked" action="<%= url %>" method="post" enctype="multipart/form-data">
                     <fieldset>          
-                        <input type="hidden" name="success_action_redirect" value="http://localhost:3000/upload_success" />
+                        <input type="hidden" name="success_action_redirect" value="<%= success_action_redirect %>" />
 
                         <label for="X-Amz-Algorithm">Algorithm</label>      
                         <input type="text" name="X-Amz-Algorithm" value="<%= algorithm %>">
