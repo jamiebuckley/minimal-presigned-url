@@ -1,6 +1,6 @@
 const url = require('url')
 const AWS = require('aws-sdk')
-const s3 = new AWS.S3({apiVersion: '2006-03-01', region: 'eu-west-2'})
+const s3 = new AWS.S3({apiVersion: '2006-03-01', region: process.env['AWS_REGION']})
 
 const express = require('express')
 const app = express()

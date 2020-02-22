@@ -8,10 +8,11 @@ The purpose is to document the use of presigned URLs, and to delve a little deep
 
 `npm install`
 
-`AWS_BUCKET=your.bucket npm start`
+`AWS_REGION=eu-west-2 AWS_BUCKET=your.bucket npm start`
 
 ## Environment Variables
 
-|    Name    | Example Value |                       Explanation                       |
-| ---------- | ------------- | ------------------------------------------------------- |
-| AWS_BUCKET | my.s3.bucket  | The bucket to use for the creation of the presigned url |
+|    Name    | Example Value |                         Explanation                         |
+| ---------- | ------------- | ----------------------------------------------------------- |
+| AWS_BUCKET | my.s3.bucket  | The bucket to use for the creation of the presigned url     |
+| AWS_REGION | eu-west-2     | The region to use for uploads and presigned url calculation |
