@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>S3 Presigned URL</title>
+        <link rel="stylesheet" rel="stylesheet" href="/public/styles.css">
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="pure-g content">
+            <div class="pure-u-1">
+                <form class="pure-form pure-form-stacked" action="<%= url %>" method="post" enctype="multipart/form-data">
+                    <fieldset>          
+                        <input type="hidden" name="success_action_redirect" value="http://localhost:3000/upload_success" />
+
+                        <label for="X-Amz-Algorithm">Algorithm</label>      
+                        <input type="text" name="X-Amz-Algorithm" value="<%= algorithm %>">
+
+                        <label for="X-Amz-Credential">Credential</label>      
+                        <input type="text" name="X-Amz-Credential" value="<%= credential %>">
+
+                        <label for="X-Amz-Date">Date</label>      
+                        <input type="text" name="X-Amz-Date" value="<%= date %>">
+
+                        <label for="X-Amz-Signature">Signature</label>      
+                        <input type="text" name="X-Amz-Signature" value="<%= signature %>">
+
+                        <label for="Policy">Policy</label>  
+                        <input type="text" name="Policy" value="<%= policy %>" />
+                        <label for="key">Key</label>      
+                        <input type="text" name="key" value="<%= key %>">
+
+                        <label for="file">Signature</label>      
+                        <input type="file" name="file">
+
+                        <button type="submit" class="pure-button pure-button-primary">Upload</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
