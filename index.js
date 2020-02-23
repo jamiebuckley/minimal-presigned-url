@@ -13,7 +13,7 @@ const port = 3000
  * Turn into view data model
  * See https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#createPresignedPost-property
  */
-const createViewData = (data) => ({
+const createViewData = (data, successUrl) => ({
     // this is the form action route.  Won't let you post anywhere else
     url: data.url,
 
@@ -33,7 +33,7 @@ const createViewData = (data) => ({
     signature: data.fields['X-Amz-Signature'],
 
     // Where the upload will redirect to on success
-    success_action_redirect: success_url,
+    success_action_redirect: successUrl,
 
     // The base64 calculation of all of the above, which combines to say "what is allowed to be uploaded"
     policy: data.fields['Policy']
@@ -63,7 +63,7 @@ const handleIndex = (req, res) => {
             res.render('error');
         } else {
             console.log(data);
-            res.render('index', createViewData(req));
+            res.render('index', createViewData(data, successUrl));
         }
     });
 };
